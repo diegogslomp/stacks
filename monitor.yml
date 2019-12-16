@@ -1,0 +1,59 @@
+version: '3.1'
+
+services:
+  app:
+    restart: unless-stopped
+    image: diegogslomp/django-monitor
+    environment:
+      SECRET_KEY: secret_key
+      DB_NAME: postgres
+      DB_USER: postgres
+      DB_PASS: postgres
+    volumes:
+      - static:/usr/src/app/static
+    networks:
+      - frontend
+      - backend
+    depends_on:
+      - db
+
+  monitord:
+    restart: unless-stopped
+    image: diegogslomp/django-monitor
+    command: python manage.py monitord
+    networks:
+      - backend
+    depends_on:
+      - app
+
+  db:
+    restart: unless-stopped
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      - db:/var/lib/postgresql/data
+    networks:
+      - backend
+
+  web:
+    restart: unless-stopped
+    image: diegogslomp/nginx-proxy
+    volumes:
+      - static:/usr/src/app/static
+    networks:
+      - frontend
+    ports:
+      - "8000:80"
+    depends_on:
+      - app
+
+networks:
+  frontend:
+  backend:
+
+volumes:
+  db:
+  static:
