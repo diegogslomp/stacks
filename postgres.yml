@@ -1,0 +1,25 @@
+version: '3.1'
+
+services:
+  pgadmin:
+    image: dpage/pgadmin4
+    ports:
+      - '8484:80'
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: secret
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+
+  db:
+    image: postgres
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - data:/var/lib/postgresql/data
+
+volumes:
+  pgadmin:
+  data:
