@@ -1,6 +1,6 @@
 # Docker Stacks
 
-Copy/Edit or link docker-compose and env files:
+Link docker-compose and env files:
 ```bash
 ln -s owncloud.yml docker-compose.yml
 ln -s owncloud.env .env
