@@ -1,16 +1,20 @@
 # Docker Stacks
 
-Using docker swarm:
-
+Copy/Edit or link docker-compose and env files:
 ```bash
-docker swarm init
-docker stack deploy -c wordpress.yml wordpress
-docker service ls
+ln -s owncloud.yml docker-compose.yml
+ln -s owncloud.env .env
 ```
 
-Or with docker-compose:
+Run with `docker-compose`:
 ```bash
-ln -s wordpress.yml docker-compose.yml
 docker-compose up -d
 docker ps
+```
+
+Or with `docker stack deploy`:
+```bash
+docker swarn init
+docker stack deploy -c <(docker-compose config) owncloud
+docker service ls
 ```
