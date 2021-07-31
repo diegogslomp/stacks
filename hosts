@@ -1,0 +1,9 @@
+# add to /etc/hosts
+127.0.0.1	traefik.dgs.net
+127.0.0.1	swarmpit.dgs.net
+127.0.0.1	owncloud.dgs.net
+127.0.0.1	portainer.dgs.net
+127.0.0.1	grafana.dgs.net
+127.0.0.1	alertmanager.dgs.net
+127.0.0.1	unsee.dgs.net
+127.0.0.1	prometheus.dgs.net

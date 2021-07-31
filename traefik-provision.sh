@@ -16,7 +16,7 @@ export PASSWORD=adminpass
 
 # Use openssl to generate the "hashed" version of the password
 export HASHED_PASSWORD=$(openssl passwd -apr1 $PASSWORD)
-export DOMAIN=localhost
+export DOMAIN=traefik.dgs.net
 
 docker stack deploy -c traefik.yml traefik
 
