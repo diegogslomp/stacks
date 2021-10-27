@@ -1,6 +1,6 @@
 # Docker Stacks
 
-With `git` and `docker` installed, clone and run the stack yml file with `docker stack deploy`. Ex:
+With `git` and `docker` installed, clone and run the stack yml file with `docker stack deploy`:
 
 ```bash
 git clone --depth 1 https://github.com/diegogslomp/stacks
