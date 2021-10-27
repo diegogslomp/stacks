@@ -13,7 +13,7 @@ services:
       # Listen on port 443, default for HTTPS
       - target: 443
         published: 443
-        mode: host 
+        mode: host
     deploy:
       placement:
         constraints:
