@@ -1,12 +1,4 @@
-version: "3"
-
-volumes:
-  files:
-    driver: local
-  mysql:
-    driver: local
-  redis:
-    driver: local
+version: "3.3"
 
 services:
   owncloud:
@@ -14,7 +6,7 @@ services:
     container_name: owncloud_server
     restart: always
     ports:
-      - ${HTTP_PORT}:8080
+      - ${HTTP_PORT}:8080    
     depends_on:
       - mariadb
       - redis
@@ -36,7 +28,26 @@ services:
       timeout: 10s
       retries: 5
     volumes:
-      - files:/mnt/data
+      - owncloud-files:/mnt/data
+    networks:
+      - owncloud-network
+      - traefik-public      
+    deploy:
+      placement:
+        constraints:
+          - node.labels.owncloud.owncloud-files == true
+      labels:
+        - traefik.enable=true
+        - traefik.docker.network=traefik-public
+        - traefik.constraint-label=traefik-public
+        - traefik.http.routers.owncloud-http.rule=Host(`${OWNCLOUD_DOMAIN?Variable not set}`)
+        - traefik.http.routers.owncloud-http.entrypoints=http
+        - traefik.http.routers.owncloud-http.middlewares=https-redirect
+        - traefik.http.routers.owncloud-https.rule=Host(`${OWNCLOUD_DOMAIN?Variable not set}`)
+        - traefik.http.routers.owncloud-https.entrypoints=https
+        - traefik.http.routers.owncloud-https.tls=true
+        - traefik.http.routers.owncloud-https.tls.certresolver=le
+        - traefik.http.services.owncloud.loadbalancer.server.port=8080
 
   mariadb:
     image: mariadb:10.5
@@ -54,7 +65,13 @@ services:
       timeout: 5s
       retries: 5
     volumes:
-      - mysql:/var/lib/mysql
+      - owncloud-mysql:/var/lib/mysql
+    networks:
+      - owncloud-network
+    deploy:
+      placement:
+        constraints:
+          - node.labels.owncloud.owncloud-mysql == true      
 
   redis:
     image: redis:6
@@ -67,5 +84,20 @@ services:
       timeout: 5s
       retries: 5
     volumes:
-      - redis:/data
+      - owncloud-redis:/data
+    networks:
+      - owncloud-network
+    deploy:
+      placement:
+        constraints:
+          - node.labels.owncloud.owncloud-redis == true      
 
+volumes:
+  owncloud-files:
+  owncloud-mysql:
+  owncloud-redis:
+
+networks:
+  owncloud-network:
+  traefik-public:
+    external: true
