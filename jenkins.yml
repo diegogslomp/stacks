@@ -8,5 +8,8 @@ services:
       - 8083:8080
       - 50003:50000
     volumes:
-      #      - ~/jenkins_data:/var/jenkins_home
+      - jenkins_home:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
+
+volumes:
+  jenkins_home:
