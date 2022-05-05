@@ -8,6 +8,7 @@ services:
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@example.com
       PGADMIN_DEFAULT_PASSWORD: secret
+      PGADMIN_LISTEN_ADDRESS: 0.0.0.0
     volumes:
       - pgadmin:/var/lib/pgadmin
 
