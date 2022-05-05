@@ -1,5 +1,6 @@
 .env
-docker-compose.yml
 swarmprom/
 private-clouds/app/
 private-clouds/proxy/
+data/
+letsencrypt/
