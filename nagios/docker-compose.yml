@@ -1,0 +1,24 @@
+version: '3'
+
+# Default credentials: nagiosadmin:nagios
+services:
+
+  nagios:
+    image: jasonrivers/nagios:latest
+    volumes:
+    - nagiosetc:/opt/nagios/etc
+    - nagiosvar:/opt/nagios/var
+    - customplugins:/opt/Custom-Nagios-Plugins
+    - nagiosgraphvar:/opt/nagiosgraph/var
+    - nagiosgraphetc:/opt/nagiosgraph/etc
+    - apachelog:/var/log/apache2
+    ports:
+    - 3002:80
+
+volumes:
+    nagiosetc:
+    nagiosvar:
+    customplugins:
+    nagiosgraphvar:
+    nagiosgraphetc:
+    apachelog:
