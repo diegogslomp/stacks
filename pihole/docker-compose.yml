@@ -10,7 +10,7 @@ services:
       - "53:53/tcp"
       - "53:53/udp"
       # - "67:67/udp" # Only required if you are using Pi-hole as your DHCP server
-      - "80:80/tcp"
+      - "8044:80/tcp"
     environment:
       TZ: 'America/Sao_Paulo'
       # WEBPASSWORD: 'set a secure password here or it will be random'
