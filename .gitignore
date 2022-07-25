@@ -4,3 +4,4 @@ private-clouds/app/
 private-clouds/proxy/
 data/
 letsencrypt/
+lidarr/config/
