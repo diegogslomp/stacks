@@ -1,8 +1,10 @@
-Docker compose/stack files. Test:
+Docker compose/stack files. Test (Ctrl + c to exit):
 
 ```bash
 cd postgres
 docker compose up -d
+docker compose logs -f
+docker compose down -v
 ```
 
 Deploy:
