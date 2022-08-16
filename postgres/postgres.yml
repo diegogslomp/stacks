@@ -4,7 +4,7 @@ services:
   pgadmin:
     image: dpage/pgadmin4
     ports:
-      - "8484:80"
+      - 8484:80
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@example.com
       PGADMIN_DEFAULT_PASSWORD: admin
@@ -15,7 +15,7 @@ services:
   db:
     image: postgres
     ports:
-      - "5432:5432"
+      - 5432
     environment:
       POSTGRES_PASSWORD: postgres
     volumes:
