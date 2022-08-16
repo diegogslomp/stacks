@@ -4,7 +4,7 @@ Docker compose/swarm files. Test (Ctrl+c to exit):
 cd postgres
 docker compose -f postgres.yml up -d
 docker compose -f postgres.yml logs -f
-docker compose -f postgres.yml  down -v
+docker compose -f postgres.yml down -v
 ```
 
 Deploy:
