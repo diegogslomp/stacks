@@ -2,9 +2,9 @@ Docker compose/stack files. Test (Ctrl+c to exit):
 
 ```bash
 cd postgres
-docker compose up -d
-docker compose logs -f
-docker compose down -v
+docker compose -f postgres.yml up -d
+docker compose -f postgres.yml logs -f
+docker compose -f postgres.yml  down -v
 ```
 
 Deploy:
