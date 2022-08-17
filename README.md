@@ -1,4 +1,8 @@
-Docker compose/swarm files. Test (Ctrl+c to exit):
+# Stacks
+
+Docker compose/swarm files
+
+Test a postgresql + pgadmin4 stack as example (Ctrl+c to exit):
 
 ```bash
 git clone --single-branch https://github.com/diegogslomp/stacks
