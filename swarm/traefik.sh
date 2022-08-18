@@ -12,7 +12,7 @@ docker node update --label-add traefik-public.traefik-public-certificates=true $
 # User credentials
 export USERNAME=admin
 export EMAIL=admin@dgs.net
-export PASSWORD=adminpass
+export PASSWORD=admin
 
 # Use openssl to generate the "hashed" version of the password
 export HASHED_PASSWORD=$(openssl passwd -apr1 $PASSWORD)
