@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # Create a network that will be shared with Traefik and the containers that should be accessible from the outside
 docker network create --driver=overlay traefik-public
@@ -20,3 +20,8 @@ export DOMAIN=traefik.dgs.net
 
 docker stack deploy -c traefik.yml traefik
 
+# Add new domain to /etc/hosts
+if ! grep -q "$DOMAIN" /etc/hosts; then
+  echo "Add 127.0.0.1 ${DOMAIN} to /etc/hosts"
+  echo "127.0.0.1 ${DOMAIN}" | sudo tee -a /etc/hosts
+fi
