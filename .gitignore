@@ -5,3 +5,7 @@ private-clouds/proxy/
 data/
 letsencrypt/
 lidarr/config/
+config/
+cache/
+metadata/
+generated/
