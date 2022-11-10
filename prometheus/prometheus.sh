@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-docker run \
+docker run -d \
     -p 9090:9090 \
     -v ~/repos/stacks/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml \
-    prom/prometheus
+    --name prometheus prom/prometheus
