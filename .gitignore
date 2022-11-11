@@ -10,3 +10,4 @@ cache/
 metadata/
 generated/
 node_exporter
+Pipfile.lock
