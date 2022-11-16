@@ -11,3 +11,4 @@ metadata/
 generated/
 node_exporter
 Pipfile.lock
+temperature_exporter.py
