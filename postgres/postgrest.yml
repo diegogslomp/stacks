@@ -3,9 +3,6 @@ services:
   server:
     image: postgrest/postgrest
     restart: unless-stopped
-    networks:
-      - backend
-      - frontend
     ports:
       - "3000:3000"
     environment:
@@ -17,8 +14,8 @@ services:
   db:
     image: postgres
     restart: unless-stopped
-    networks:
-      - backend
+    ports:
+      - "5432:5432"
     environment:
       POSTGRES_DB: app_db
       POSTGRES_USER: app_user
@@ -29,18 +26,12 @@ services:
   swagger:
     image: swaggerapi/swagger-ui
     restart: unless-stopped
-    networks:
-      - frontend
     ports:
       - "8080:8080"
     environment:
       API_URL: http://localhost:3000/
     depends_on:
       - server
-
-networks:
-  frontend:
-  backend:
 
 volumes:
   db:
