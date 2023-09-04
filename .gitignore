@@ -1,4 +1,5 @@
 .env
+.idea/
 swarmprom/
 private-clouds/app/
 private-clouds/proxy/
