@@ -33,5 +33,18 @@ services:
     depends_on:
       - server
 
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_LISTEN_ADDRESS: 0.0.0.0
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    restart: unless-stopped
+    ports:
+      - "8484:80"
+
 volumes:
   db:
+  pgadmin:
