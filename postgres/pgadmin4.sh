@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
 docker pull dpage/pgadmin4
 docker stop pgadmin
